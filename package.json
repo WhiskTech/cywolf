@@ -1,10 +1,10 @@
 {
     "name": "cywolf",
-    "version": "1.0.6",
+    "version": "0.0.5-beta",
     "description": "evented, modular wolfgame for node",
     "main": "index.js",
     "scripts": {
-	"test": "echo \"Error: no test specified\" && exit 1"
+	"test": "echo \"Tests are coming 'soon'\" && exit 1"
     },
     "repository": {
 	"type": "git",

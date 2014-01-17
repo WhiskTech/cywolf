@@ -11,7 +11,7 @@ Seer = (Wolfgame) ->
                 if Wolfgame.autocomplete(player, this.name) && player != this.name
                         player = Wolfgame.autocomplete(player)
                         role = Wolfgame.players[player].see();
-                        Wolfgame.pm(this.name, Wolfgame.c.green('You have a vision; in this vision you see that ') + Wolfgame.c.bold.green(player) + Wolfgame.c.green(' is a ') + Wolfgame.c.bold.green(role) + Wolfgame.c.green('!'))
+                        Wolfgame.pm(this.name, 'You have a vision; in this vision you see that ' + Wolfgame.bold(player) + ' is a ' + Wolfgame.bold(role) + '!')
                         this.acted = true    
         return this
 util.inherits(Seer, Villager)

@@ -6,14 +6,24 @@ var chance = new Chance();
 var fs = require('fs');
 var coffee = require('coffee-script');
 var EventEmitter = require('events').EventEmitter;
-var Wolfgame = function() {
+var Wolfgame = function(options) {
+    if (!options) {
+	options = {irc: false};
+    }
     this.players = {};
     this.phase = 'start';
     this.lynches = {};
     this.dead = {};
     this.over = false;
     this.timeouts = [];
-    this.c = require('irc-colors');
+    if (options.irc) {
+	this.bold = require('irc-colors').bold;
+    }
+    else {
+	this.bold = function(x) {
+	    return x;
+	};
+    }
     this.Villager = require('./roles/villager.js');
     this.checkEnd = function() {
 	var wolves = 0;
@@ -74,7 +84,7 @@ var Wolfgame = function() {
     this.autocomplete = function(player, from) {
 	var count = 0;
         _.keys(this.players).forEach(function(p) {
-            if (p.indexOf(player) == 0 || p.indexOf(player.toLowerCase()) == 0) {
+            if (p.indexOf(player) == 0 || p.toLowerCase().indexOf(player) == 0) {
                 player = p;
 		count++;
             }
@@ -143,7 +153,6 @@ var Wolfgame = function() {
 	roled.forEach(function(p) {
 	    process.game.players[p.name] = p;
 	});
-	console.log('Picked random player: ' + chosen);
 	return chosen;
     };
     this.listRoles = function(cb) {
@@ -249,12 +258,12 @@ var Wolfgame = function() {
 	    clearTimeout(t);
 	});
 	setTimeout(function() {
-	this.timeouts.push(setTimeout(function() {
-	    if (this.phase == 'night') {
-		this.emit('day');
-	    }
-	}, 120000));
-	    }, 1000);
+	    process.game.timeouts.push(setTimeout(function() {
+		if (process.game.phase == 'night') {
+		    process.game.emit('day');
+		}
+	    }, 120000));
+	}, 1000);
     });
     this.on('day', function() {
 	this.phase = 'day';

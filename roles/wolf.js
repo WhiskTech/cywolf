@@ -14,7 +14,7 @@ var Wolf = function(Wolfgame) {
 	if (Wolfgame.autocomplete(target, this.name) && target != this.name) {
             target = Wolfgame.autocomplete(target);
 	    this.toKill = target;
-	    Wolfgame.pm(this.name, 'You have selected ' + Wolfgame.c.bold(target) + ' to be killed.');
+	    Wolfgame.pm(this.name, 'You have selected ' + Wolfgame.bold(target) + ' to be killed.');
 	    this.acted = true;
 	}
     };
