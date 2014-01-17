@@ -74,7 +74,7 @@ var Wolfgame = function() {
     this.autocomplete = function(player, from) {
 	var count = 0;
         _.keys(this.players).forEach(function(p) {
-            if (p.indexOf(player) == 0) {
+            if (p.indexOf(player) == 0 || p.indexOf(player.toLowerCase()) == 0) {
                 player = p;
 		count++;
             }
