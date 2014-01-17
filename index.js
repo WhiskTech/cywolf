@@ -164,11 +164,11 @@ var Wolfgame = function() {
                 if (!role.minPlayers) {
                     role.minPlayers = 4;
                 }
-		ret.push(role.toString + ' [' + role.minPlayers + ']');
+		ret.push(role.toString() + ' [' + role.minPlayers + ']');
             });
 	    cb(ret.join(', '));
 	});
-    }
+    };
     this.allocate = function() {
 	process.game = this;
 	fs.readdir(__dirname + '/roles', function(err, roles) {
