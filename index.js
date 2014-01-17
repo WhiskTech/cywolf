@@ -14,10 +14,6 @@ var Wolfgame = function() {
     this.over = false;
     this.timeouts = [];
     this.c = require('irc-colors');
-    /* Roles */
-    this.Seer = require('./roles/seer.coffee');
-    this.Cursed = require('./roles/cursed.coffee');
-    this.Wolf = require('./roles/wolf.js');
     this.Villager = require('./roles/villager.js');
     this.checkEnd = function() {
 	var wolves = 0;
@@ -55,14 +51,18 @@ var Wolfgame = function() {
 		if (this.dead[player].onDeath) {
 		    player.onDeath(this, player.name);
 		}
-		/* This bit has a weird bug.
 		_k(this.players).forEach(function(p) {
-		    p = this.players[p];
-		    if (p.onOtherDeath) {
-		    p.onOtherDeath(process.game, player.name);
+		    if (typeof p == 'undefined') {
+			return;
 		    }
-		    });
-			*/
+		    p = process.game.players[p];
+                    if (typeof p == 'undefined') {
+                        return;
+                    }
+		    if (p.onOtherDeath) {
+			p.onOtherDeath(process.game, player.name);
+		    }
+		});
 		if (hooks) {
 		    hooks.after(this, player);
 		}

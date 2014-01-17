@@ -27,6 +27,7 @@ var Wolf = function(Wolfgame) {
     this.see = function() {
         return 'wolf';
     };
+    this.minPlayers = 4;
 };
 util.inherits(Wolf, Villager);
 module.exports = Wolf;

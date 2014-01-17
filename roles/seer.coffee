@@ -5,6 +5,7 @@ Seer = (Wolfgame) ->
         this.acted = false
         this.canAct = true
         this.actName = 'see'
+        this.minPlayers = 4;
         this.description = 'You can see one person per night, and reveal their role.'
         this.act = (player) ->
                 if Wolfgame.autocomplete(player, this.name) && player != this.name
