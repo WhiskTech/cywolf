@@ -146,7 +146,7 @@ var Wolfgame = function() {
 	console.log('Picked random player: ' + chosen);
 	return chosen;
     };
-    this.listRoles = function() {
+    this.listRoles = function(cb) {
         fs.readdir(__dirname + '/roles', function(err, roles) {
             if (err) { // We're screwed
                 throw err;
@@ -166,7 +166,7 @@ var Wolfgame = function() {
                 }
 		ret.push(role.toString + ' [' + role.minPlayers + ']');
             });
-	    return ret.join(', ');
+	    cb(ret.join(', '));
 	});
     }
     this.allocate = function() {
