@@ -2,7 +2,7 @@ Cywolf
 ======
 
 Cywolf: evented, modular wolfgame for node.
-This module was originally part of [the IRC bot](http://cywolf.co.uk).
+This module was originally part of [the IRC bot](http://github.com/whiskers75/cyril).
 
 ![NPM](https://nodei.co/npm/cywolf.png?downloads=true&stars=true)
 
