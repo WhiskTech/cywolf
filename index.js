@@ -168,6 +168,7 @@ var Wolfgame = function() {
             });
 	    return ret.join(', ');
 	});
+    }
     this.allocate = function() {
 	process.game = this;
 	fs.readdir(__dirname + '/roles', function(err, roles) {
