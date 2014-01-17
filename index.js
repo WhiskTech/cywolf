@@ -146,6 +146,28 @@ var Wolfgame = function() {
 	console.log('Picked random player: ' + chosen);
 	return chosen;
     };
+    this.listRoles = function() {
+        fs.readdir(__dirname + '/roles', function(err, roles) {
+            if (err) { // We're screwed
+                throw err;
+            }
+            var ret = [];
+            roles.forEach(function(role) {
+                try {
+                    role = require(__dirname + '/roles/' + role);
+                }
+                catch(e) {
+                    console.log('Error reading role: ' + role, err);
+                    return;
+                }
+                role = new role(process.game);
+                if (!role.minPlayers) {
+                    role.minPlayers = 4;
+                }
+		ret.push(role.toString + ' [' + role.minPlayers + ']');
+            });
+	    return ret.join(', ');
+	});
     this.allocate = function() {
 	process.game = this;
 	fs.readdir(__dirname + '/roles', function(err, roles) {
