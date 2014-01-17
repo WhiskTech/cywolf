@@ -1,23 +1,23 @@
 {
-  "name": "cywolf",
-  "version": "1.0.0",
-  "description": "evented, modular wolfgame for node",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/WhiskTech/cywolf"
-  },
-  "keywords": [
-    "wolfgame"
-  ],
-  "author": "whiskers75",
-  "license": "GPL",
-  "dependencies": {
-    "chance": "~0.5.4",
-    "coffee-script": "~1.6.3",
-    "irc-colors": "~1.0.3"
-  }
+    "name": "cywolf",
+    "version": "1.0.0",
+    "description": "evented, modular wolfgame for node",
+    "main": "index.js",
+    "scripts": {
+	"test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+	"type": "git",
+	"url": "git://github.com/WhiskTech/cywolf"
+    },
+    "keywords": [
+	"wolfgame"
+    ],
+    "author": "whiskers75",
+    "license": "BSD",
+    "dependencies": {
+	"chance": "~0.5.4",
+	"coffee-script": "~1.6.3",
+	"irc-colors": "~1.0.3"
+    }
 }
