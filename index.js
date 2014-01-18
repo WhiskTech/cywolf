@@ -42,6 +42,10 @@ var Wolfgame = function(options) {
             if (typeof process.game.players[player] == 'undefined') {
 		return;
 	    }
+            if (typeof process.game.players[player].role == 'undefined') {
+		console.log('.');
+                return;
+            }
 	    if (process.game.players[player].role.team == 'wolf'){
 		wolves++;
 	    }
