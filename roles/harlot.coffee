@@ -1,12 +1,12 @@
 Villager = require('./villager.js')
 util = require('util')
-Seer = (Wolfgame) ->
+Harlot = (Wolfgame) ->
         this.toString = () -> return 'harlot'
         this.acted = false
         this.canAct = true
-        this.visited = false;
+        this.visited = false
         this.actName = 'visit'
-        this.description = 'You can visit one person every night. Visiting a wolf will kill you.'
+        this.description = 'You can visit one person every night. Visiting a wolf will kill you, so be careful!'
         this.onDay = () ->
                 if this.visited && Wolfgame.players[this.visited]
                         if Wolfgame.players[this.visited].toString() == 'wolf'
@@ -20,5 +20,5 @@ Seer = (Wolfgame) ->
                         this.acted = true    
         this.minPlayers = 8;
         return this
-util.inherits(Seer, Villager)
-module.exports = Seer
+util.inherits(Harlot, Villager)
+module.exports = Harlot

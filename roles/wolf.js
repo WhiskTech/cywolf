@@ -9,7 +9,7 @@ var Wolf = function(Wolfgame) {
     this.toString = function() {
 	return 'wolf';
     };
-    this.description = 'You are a werewolf! You can choose one person to kill every night.';
+    this.description = 'You can choose one person to kill every night.';
     this.act = function(target) {
 	if (Wolfgame.autocomplete(target, this.name) && target != this.name) {
             target = Wolfgame.autocomplete(target);
