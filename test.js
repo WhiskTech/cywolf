@@ -25,7 +25,7 @@ it('starts', function(done) {
     setTimeout(function() {
 	game.once('start', done);
 	game.emit('start');
-    }, 100);
+    }, 7);
 });
 it('kills', function(done) {
     game.once('death', function(data) {
