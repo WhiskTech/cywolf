@@ -10,3 +10,7 @@ deploy:
     repo: WhiskTech/cywolf
     branch: master
     node: 0.10
+notifications:
+  irc:
+    channels:
+      - "irc.freenode.net#cywolf"
