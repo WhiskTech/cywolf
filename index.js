@@ -39,6 +39,9 @@ var Wolfgame = function(options) {
 	var wolves = 0;
 	var vills = 0;
 	_.keys(process.game.players).forEach(function(player) {
+            if (typeof process.game.players[player] == 'undefined') {
+		return;
+	    }
 	    if (process.game.players[player].role.team == 'wolf'){
 		wolves++;
 	    }
