@@ -1,7 +1,5 @@
 var Cywolf = require('./index.js');
-var colors = require('colors');
 var game = new Cywolf();
-var test1 = false;
 
 it('joins', function(done) {    
     game.once('joined', function(data) {
