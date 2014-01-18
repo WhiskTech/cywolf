@@ -39,7 +39,7 @@ var Wolfgame = function(options) {
 	var wolves = 0;
 	var vills = 0;
 	_.keys(process.game.players).forEach(function(player) {
-	    if (process.game.players[player].team == 'wolf'){
+	    if (process.game.players[player].role.team == 'wolf'){
 		wolves++;
 	    }
 	    else {
@@ -164,13 +164,13 @@ var Wolfgame = function(options) {
 	if (typeof hooks == 'undefined') {
 	    hooks = false;
 	}
-	this.emit('death', {player: player, reason: reason, role: this.players[player]});
+	this.emit('death', {player: player, reason: reason, role: this.players[player].role});
 	this.dead[player] = this.players[player];
         delete this.players[player];
         if (this.phase !== 'start') {
 	    var end = this.checkEnd();
 	    if (!end) {
-		if (this.dead[player].onDeath) {
+		if (this.dead[player].role.onDeath) {
 		    player.onDeath(this, player.name);
 		}
 		_.keys(this.players).forEach(function(p) {
@@ -181,8 +181,8 @@ var Wolfgame = function(options) {
                     if (typeof p == 'undefined') {
                         return;
                     }
-		    if (p.onOtherDeath) {
-			p.onOtherDeath(process.game, player.name);
+		    if (p.role.onOtherDeath) {
+			p.role.onOtherDeath(process.game, player.name);
 		    }
 		});
 		if (hooks) {
@@ -245,7 +245,7 @@ var Wolfgame = function(options) {
 		}
 		if (_.keys(process.game.players).length >= role.minPlayers) {
 		    var torole = process.game.randomUPlayer();
-		    process.game.players[torole] = role;
+		    process.game.players[torole].role = role;
 		    process.game.players[torole].name = torole;
 		}
 	    });
@@ -356,10 +356,10 @@ var Wolfgame = function(options) {
             if (typeof p == 'undefined') {
                 return;
             }
-	    if (p.canAct) {
+	    if (p.role.canAct) {
 		p.acted = false;
 	    }
-	    if (p.onDay) {
+	    if (p.role.onDay) {
 		p.onDay();
 	    }
 	});
