@@ -264,15 +264,28 @@ var Wolfgame = function(options) {
             return process.game.emit('night');
 	});
     };
-    /*
-      Wolfgame.on('join');
-      Joins a player.
-    */
+    // Events
+    // ------
+
+    
+    // `'join' {player: 'player'}`
+    //
+    // Emit to join a player.
+    //
+    // `'quitted', {player: 'player'}`
+    //
+    // Emitted when a player joins.
     this.on('join', function(data) {
 	if (this.phase != 'start') {
+	    // `'error' instanceof Error`
+	    //
+	    // Emitted when an error is thrown. **Have some code handling errors, or one error event will crash the game!**
 	    return this.emit('error', new Error('You can\'t join or quit now!'));
 	}
 	if (_.keys(this.players).indexOf(data.player) !== -1) {
+	    // `'notice', {to: 'player', message: 'blah'}`
+	    //
+	    // Emitted when Cywolf wants to send a notice to a player.
             this.emit('notice', {to: data.player, message: 'You are already playing.'});
 	}
 	else {
@@ -280,10 +293,13 @@ var Wolfgame = function(options) {
 	    this.emit('joined', {player: data.player});
 	}
     });
-    /*
-      Wolfgame.on('quit')
-      Quits a player.
-    */
+    // `'quit' {player: 'player'}`
+    //
+    // Emit to quit a player.
+    //
+    // `'quitted' {player: 'player'}`
+    //
+    // Emitted when a player quits.
     this.on('quit', function(data) {
         if (this.phase != 'start') {
             return this.emit('error', new Error('You can\'t join or quit now!'));
@@ -296,10 +312,13 @@ var Wolfgame = function(options) {
 	    this.emit('quitted', {player: data.player});
 	}
     });
-    /*
-      Wolfgame.on('start')
-      Starts the game, allocates roles and begins the first night.
-    */
+    // `'start'`
+    //
+    // Emit to start the game.
+    //
+    // `'starting'`
+    //
+    // Emitted when the game is starting.
     this.on('start', function() {
 	if (this.phase != 'start') {
 	    return this.emit('error', new Error('You can\'t start the game now!'));
@@ -308,10 +327,9 @@ var Wolfgame = function(options) {
 	this.phase = 'night';
 	this.allocate();
     });
-    /*
-      Wolfgame.on('night')
-      Cleanup functions for night. Note that the frontend is expected to handle roles!
-    */
+    // `'night'`
+    //
+    // Emitted when night starts. Note that the frontend is expected to handle roles!
     this.on('night', function() {
 	this.phase = 'night';
 	this.killing = '';
@@ -326,10 +344,9 @@ var Wolfgame = function(options) {
 	    }, 120000));
 	}, 1000);
     });
-    /*
-      Wolfgame.on('day')
-      Cleanup functions for day.
-    */
+    // `day`
+    //
+    // Emitted when day starts.
     this.on('day', function() {
 	this.phase = 'day';
 	this.lynches = {};
@@ -352,10 +369,9 @@ var Wolfgame = function(options) {
 	    }
 	});
     });
-    /*
-      Wolfgame.on('gameover')
-      Cleanup for when the game ends.
-    */
+    // `gameover`
+    //
+    // Emitted when the game ends.
     this.on('gameover', function() {
         this.timeouts.forEach(function(t) {
             clearTimeout(t);
