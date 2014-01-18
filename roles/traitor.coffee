@@ -11,9 +11,8 @@ Traitor = (Wolfgame) ->
                 if wolves == 0
                         Wolfgame.emit('traitor')
                         thisp = Wolfgame.players[this.name]
-                        thisname = this.name
-                        thisp = new Wolf(Wolfgame)
-                        thisp.name = thisname
+                        thisp.role = new Wolf(Wolfgame)
+                        thisp.name = this.name
         this.minPlayers = 8;
         return this
 util.inherits(Traitor, Villager)
