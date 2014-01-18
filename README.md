@@ -1,6 +1,6 @@
 Cywolf
 ======
-[![Build Status](https://travis-ci.org/WhiskTech/cywolf.png?branch=master)](https://travis-ci.org/WhiskTech/cywolf) [![Dependency Status](https://gemnasium.com/WhiskTech/cywolf.png)](https://gemnasium.com/WhiskTech/cywolf) [![Stories in Ready](https://badge.waffle.io/WhiskTech/whiskchat-server.png?label=ready)](https://waffle.io/WhiskTech/whiskchat-server) 
+[![Build Status](https://travis-ci.org/WhiskTech/cywolf.png?branch=master)](https://travis-ci.org/WhiskTech/cywolf) [![Dependency Status](https://gemnasium.com/WhiskTech/cywolf.png)](https://gemnasium.com/WhiskTech/cywolf) [![Stories in Ready](https://badge.waffle.io/WhiskTech/cywolf.png?label=ready)](https://waffle.io/WhiskTech/cywolf) 
 
 Cywolf: evented, modular wolfgame for node.
 This module was originally part of [the IRC bot](http://github.com/whiskers75/cyril).
