@@ -208,7 +208,6 @@ var Wolfgame = function(options) {
                     role = require(__dirname + '/roles/' + role);
                 }
                 catch(e) {
-                    console.log('Error reading role: ' + role, err);
                     return;
                 }
                 role = new role(process.game);
@@ -235,7 +234,6 @@ var Wolfgame = function(options) {
 		    role = require(__dirname + '/roles/' + role);
 		}
 		catch(e) {
-		    console.log('Error reading role: ' + role, err);
 		    return;
 		}
 		role = new role(process.game);
@@ -245,13 +243,10 @@ var Wolfgame = function(options) {
 		if (!role.minPlayers) {
 		    role.minPlayers = 0;
 		}
-                console.log('Loaded role: ' + role.toString() + ' (requires ' + role.minPlayers + ' players)');
 		if (_.keys(process.game.players).length >= role.minPlayers) {
 		    var torole = process.game.randomUPlayer();
-		    console.log('Allocating role: ' + role.toString() + ' to player ' + torole);
 		    process.game.players[torole] = role;
 		    process.game.players[torole].name = torole;
-		    console.log(process.game.players[torole].toString());
 		}
 	    });
             var defvil = new process.game.Villager(this);

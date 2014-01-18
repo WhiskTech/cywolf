@@ -4,7 +4,7 @@
     "description": "evented, modular wolfgame for node",
     "main": "index.js",
     "scripts": {
-	"test": "echo \"Tests are coming 'soon'\" && exit 1"
+        "test": "./node_modules/mocha/bin/mocha -R spec"
     },
     "repository": {
 	"type": "git",
@@ -20,5 +20,8 @@
 	"coffee-script": "~1.6.3",
 	"irc-colors": "~1.0.3",
 	"underscore": "~1.5.2"
+    },
+    "devDependencies": {
+	"mocha": "*"
     }
 }
