@@ -8,4 +8,6 @@ This module was originally part of [the IRC bot](http://github.com/whiskers75/cy
 
 ## API documentation
 
-I'm not bothered to write much here, so you can just have a look at [bot2.js from the cyril project](https://github.com/whiskers75/cyril/blob/master/bot2.js) to see how this is used in an IRC-type context.
+You can find the docs on the [Cywolf website](http://cywolf.co.uk):
+- [Main module docs](http://cywolf.co.uk/docs/index.html)
+- [Roles API docs](http://cywolf.co.uk/docs/villager.html)
