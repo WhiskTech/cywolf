@@ -42,10 +42,6 @@ var Wolfgame = function(options) {
             if (typeof process.game.players[player] == 'undefined') {
 		return;
 	    }
-            if (typeof process.game.players[player].role == 'undefined') {
-		console.log('.');
-                return;
-            }
 	    if (process.game.players[player].role.team == 'wolf'){
 		wolves++;
 	    }
@@ -259,7 +255,7 @@ var Wolfgame = function(options) {
             var defvil = new process.game.Villager(this);
             _.keys(process.game.players).forEach(function(player) {
                 if (process.game.players[player] == 'unallocated') {
-                    process.game.players[player] = defvil;
+                    process.game.players[player].role = defvil;
                     process.game.players[player].name = player;
                 }
             });
