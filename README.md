@@ -12,3 +12,7 @@ This module was originally part of [the IRC bot](http://github.com/whiskers75/cy
 You can find the docs on the [Cywolf website](http://cywolf.co.uk):
 - [Main module docs](http://cywolf.co.uk/docs/index.html)
 - [Roles API docs](http://cywolf.co.uk/docs/villager.html)
+
+## Changelog
+
+0.1.0: code refactor, roles are now stored in player.role

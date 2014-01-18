@@ -10,7 +10,7 @@ Seer = (Wolfgame) ->
         this.act = (player) ->
                 if Wolfgame.autocomplete(player, this.name) && player != this.name
                         player = Wolfgame.autocomplete(player)
-                        role = Wolfgame.players[player].see();
+                        role = Wolfgame.players[player].role.see();
                         Wolfgame.pm(this.name, 'You have a vision; in this vision you see that ' + Wolfgame.bold(player) + ' is a ' + Wolfgame.bold(role) + '!')
                         this.acted = true    
         return this

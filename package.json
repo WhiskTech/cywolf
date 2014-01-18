@@ -1,6 +1,6 @@
 {
     "name": "cywolf",
-    "version": "0.0.7",
+    "version": "0.1.0",
     "description": "evented, modular wolfgame for node",
     "main": "index.js",
     "scripts": {

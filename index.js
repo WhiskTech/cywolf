@@ -30,6 +30,14 @@ var Wolfgame = function(options) {
 	};
     }
     this.Villager = require('./roles/villager.js');
+    // `Wolfgame.Player`
+    //
+    // Basic player object.
+    this.Player = function(name, role) {
+	this.name = name;
+	this.role = role;
+	this.role.name = name;
+    };
     // Internal functions
     // ------------------
     // `Wolfgame.checkEnd()`
@@ -39,7 +47,7 @@ var Wolfgame = function(options) {
 	var wolves = 0;
 	var vills = 0;
 	_.keys(process.game.players).forEach(function(player) {
-	    if (process.game.players[player].team == 'wolf'){
+	    if (process.game.players[player].role.team == 'wolf'){
 		wolves++;
 	    }
 	    else {
@@ -164,13 +172,13 @@ var Wolfgame = function(options) {
 	if (typeof hooks == 'undefined') {
 	    hooks = false;
 	}
-	this.emit('death', {player: player, reason: reason, role: this.players[player]});
+	this.emit('death', {player: player, reason: reason, role: this.players[player].role});
 	this.dead[player] = this.players[player];
         delete this.players[player];
         if (this.phase !== 'start') {
 	    var end = this.checkEnd();
 	    if (!end) {
-		if (this.dead[player].onDeath) {
+		if (this.dead[player].role.onDeath) {
 		    player.onDeath(this, player.name);
 		}
 		_.keys(this.players).forEach(function(p) {
@@ -181,7 +189,7 @@ var Wolfgame = function(options) {
                     if (typeof p == 'undefined') {
                         return;
                     }
-		    if (p.onOtherDeath) {
+		    if (p.role.onOtherDeath) {
 			p.onOtherDeath(process.game, player.name);
 		    }
 		});
@@ -244,16 +252,14 @@ var Wolfgame = function(options) {
 		    role.minPlayers = 0;
 		}
 		if (_.keys(process.game.players).length >= role.minPlayers) {
-		    var torole = process.game.randomUPlayer();
-		    process.game.players[torole] = role;
-		    process.game.players[torole].name = torole;
-		}
-	    });
+                    var torole = process.game.randomUPlayer();
+		    process.game.players[torole] = new process.game.Player(torole, role);
+                }
+            });
             var defvil = new process.game.Villager(this);
             _.keys(process.game.players).forEach(function(player) {
                 if (process.game.players[player] == 'unallocated') {
-                    process.game.players[player] = defvil;
-                    process.game.players[player].name = player;
+		    process.game.players[player] = new process.game.Player(player, defvil);
                 }
             });
             return process.game.emit('night');
@@ -261,7 +267,7 @@ var Wolfgame = function(options) {
     };
     // Events
     // ------
-
+    
     
     // `'join' {player: 'player'}`
     //
@@ -356,11 +362,11 @@ var Wolfgame = function(options) {
             if (typeof p == 'undefined') {
                 return;
             }
-	    if (p.canAct) {
+	    if (p.role.canAct) {
 		p.acted = false;
 	    }
-	    if (p.onDay) {
-		p.onDay();
+	    if (p.role.onDay) {
+		p.role.onDay();
 	    }
 	});
     });
