@@ -1,3 +1,10 @@
 language: node_js
 node_js:
-  - "0.10"
+- '0.10'
+deploy:
+  provider: npm
+  email: whiskers75@whiskers75.com
+  api_key:
+    secure: CZ2KeF6QC7jG3WqFbn4pYa8NJ4irscPVBc/A08bjtSa5z0KQjCCuGOCSvxb5xx9gVVGvXiwDh32nCbBkv1mzl8cG5VtigaRJBoIJGKhIGEr3i5lpgL/kHjcBlEQN3N4Qo8NrMl5eOqodJqZgMMKcB/tgFGWFdjt2amujOzaGxr8=
+  on:
+    repo: WhiskTech/cywolf
