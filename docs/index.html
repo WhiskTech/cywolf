@@ -11,6 +11,27 @@
   <div id="container">
     <div id="background"></div>
     
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="villager.html">
+                villager.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
     <ul class="sections">
         
           <li id="title">
@@ -460,28 +481,109 @@ Hooks format: <code>hooks = {after: function() {}};</code></p>
             });
             <span class="hljs-keyword">return</span> process.game.emit(<span class="hljs-string">'night'</span>);
 	});
-    };
-    <span class="hljs-comment">/*
-      Wolfgame.on('join');
-      Joins a player.
-    */</span>
-    <span class="hljs-keyword">this</span>.on(<span class="hljs-string">'join'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(data)</span> {</span>
-	<span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.phase != <span class="hljs-string">'start'</span>) {
-	    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.emit(<span class="hljs-string">'error'</span>, <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'You can\'t join or quit now!'</span>));
+    };</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <h2 id="events">Events</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p><code>&#39;join&#39; {player: &#39;player&#39;}</code></p>
+<p>Emit to join a player.</p>
+<p><code>&#39;quitted&#39;, {player: &#39;player&#39;}</code></p>
+<p>Emitted when a player joins.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">this</span>.on(<span class="hljs-string">'join'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(data)</span> {</span>
+	<span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.phase != <span class="hljs-string">'start'</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p><code>&#39;error&#39; instanceof Error</code></p>
+<p>Emitted when an error is thrown. <strong>Have some code handling errors, or one error event will crash the game!</strong></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.emit(<span class="hljs-string">'error'</span>, <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'You can\'t join or quit now!'</span>));
 	}
-	<span class="hljs-keyword">if</span> (_.keys(<span class="hljs-keyword">this</span>.players).indexOf(data.player) !== -<span class="hljs-number">1</span>) {
-            <span class="hljs-keyword">this</span>.emit(<span class="hljs-string">'notice'</span>, {to: data.player, message: <span class="hljs-string">'You are already playing.'</span>});
+	<span class="hljs-keyword">if</span> (_.keys(<span class="hljs-keyword">this</span>.players).indexOf(data.player) !== -<span class="hljs-number">1</span>) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p><code>&#39;notice&#39;, {to: &#39;player&#39;, message: &#39;blah&#39;}</code></p>
+<p>Emitted when Cywolf wants to send a notice to a player.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="hljs-keyword">this</span>.emit(<span class="hljs-string">'notice'</span>, {to: data.player, message: <span class="hljs-string">'You are already playing.'</span>});
 	}
 	<span class="hljs-keyword">else</span> {
 	    <span class="hljs-keyword">this</span>.players[data.player] = <span class="hljs-string">'unallocated'</span>;
 	    <span class="hljs-keyword">this</span>.emit(<span class="hljs-string">'joined'</span>, {player: data.player});
 	}
-    });
-    <span class="hljs-comment">/*
-      Wolfgame.on('quit')
-      Quits a player.
-    */</span>
-    <span class="hljs-keyword">this</span>.on(<span class="hljs-string">'quit'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(data)</span> {</span>
+    });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p><code>&#39;quit&#39; {player: &#39;player&#39;}</code></p>
+<p>Emit to quit a player.</p>
+<p><code>&#39;quitted&#39; {player: &#39;player&#39;}</code></p>
+<p>Emitted when a player quits.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">this</span>.on(<span class="hljs-string">'quit'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(data)</span> {</span>
         <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.phase != <span class="hljs-string">'start'</span>) {
             <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.emit(<span class="hljs-string">'error'</span>, <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'You can\'t join or quit now!'</span>));
         }
@@ -492,24 +594,48 @@ Hooks format: <code>hooks = {after: function() {}};</code></p>
 	    <span class="hljs-keyword">delete</span> <span class="hljs-keyword">this</span>.players[data.player];
 	    <span class="hljs-keyword">this</span>.emit(<span class="hljs-string">'quitted'</span>, {player: data.player});
 	}
-    });
-    <span class="hljs-comment">/*
-      Wolfgame.on('start')
-      Starts the game, allocates roles and begins the first night.
-    */</span>
-    <span class="hljs-keyword">this</span>.on(<span class="hljs-string">'start'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p><code>&#39;start&#39;</code></p>
+<p>Emit to start the game.</p>
+<p><code>&#39;starting&#39;</code></p>
+<p>Emitted when the game is starting.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">this</span>.on(<span class="hljs-string">'start'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
 	<span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.phase != <span class="hljs-string">'start'</span>) {
 	    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.emit(<span class="hljs-string">'error'</span>, <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'You can\'t start the game now!'</span>));
 	}
 	<span class="hljs-keyword">this</span>.emit(<span class="hljs-string">'starting'</span>);
 	<span class="hljs-keyword">this</span>.phase = <span class="hljs-string">'night'</span>;
 	<span class="hljs-keyword">this</span>.allocate();
-    });
-    <span class="hljs-comment">/*
-      Wolfgame.on('night')
-      Cleanup functions for night. Note that the frontend is expected to handle roles!
-    */</span>
-    <span class="hljs-keyword">this</span>.on(<span class="hljs-string">'night'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p><code>&#39;night&#39;</code></p>
+<p>Emitted when night starts. Note that the frontend is expected to handle roles!</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">this</span>.on(<span class="hljs-string">'night'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
 	<span class="hljs-keyword">this</span>.phase = <span class="hljs-string">'night'</span>;
 	<span class="hljs-keyword">this</span>.killing = <span class="hljs-string">''</span>;
 	<span class="hljs-keyword">this</span>.timeouts.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(t)</span> {</span>
@@ -522,12 +648,23 @@ Hooks format: <code>hooks = {after: function() {}};</code></p>
 		}
 	    }, <span class="hljs-number">120000</span>));
 	}, <span class="hljs-number">1000</span>);
-    });
-    <span class="hljs-comment">/*
-      Wolfgame.on('day')
-      Cleanup functions for day.
-    */</span>
-    <span class="hljs-keyword">this</span>.on(<span class="hljs-string">'day'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p><code>day</code></p>
+<p>Emitted when day starts.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">this</span>.on(<span class="hljs-string">'day'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
 	<span class="hljs-keyword">this</span>.phase = <span class="hljs-string">'day'</span>;
 	<span class="hljs-keyword">this</span>.lynches = {};
         <span class="hljs-keyword">this</span>.timeouts.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(t)</span> {</span>
@@ -548,12 +685,23 @@ Hooks format: <code>hooks = {after: function() {}};</code></p>
 		p.onDay();
 	    }
 	});
-    });
-    <span class="hljs-comment">/*
-      Wolfgame.on('gameover')
-      Cleanup for when the game ends.
-    */</span>
-    <span class="hljs-keyword">this</span>.on(<span class="hljs-string">'gameover'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
+    });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p><code>gameover</code></p>
+<p>Emitted when the game ends.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">this</span>.on(<span class="hljs-string">'gameover'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span>
         <span class="hljs-keyword">this</span>.timeouts.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(t)</span> {</span>
             clearTimeout(t);
         });
