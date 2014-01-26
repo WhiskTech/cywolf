@@ -8,7 +8,7 @@
 // Roles must be exported like this:
 //
 //      module.exports = Role;
-var Villager = function() {
+var Villager = function () {
     // `Role.team`
     //
     // Can be either `wolf` or `villager`. Used to describe which side this role is on.
@@ -16,8 +16,8 @@ var Villager = function() {
     // `Role.toString()`
     //
     // Should return the role's name, no exceptions.
-    this.toString = function() {
-	return 'villager';
+    this.toString = function () {
+        return 'villager';
     };
     // `Role.onNight()`
     //
@@ -46,9 +46,13 @@ var Villager = function() {
     // `Role.see()`
     //
     // Should return a string. Called when the seer observes this role.
-    this.see = function() {
-	return this.toString();
+    this.see = function () {
+        return this.toString();
     };
+    // `Role.commands`
+    //
+    // Any custom commands this role can execute. A JS object, like {'!shoot': function(arguments)}
+    this.commands = {};
     // `Role.onDeath()`
     //
     // Function. Called on death.

@@ -1,27 +1,28 @@
 {
     "name": "cywolf",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "evented, modular wolfgame for node",
     "main": "index.js",
     "scripts": {
         "test": "./node_modules/mocha/bin/mocha -R spec"
     },
     "repository": {
-	"type": "git",
-	"url": "git://github.com/WhiskTech/cywolf"
+        "type": "git",
+        "url": "git://github.com/WhiskTech/cywolf"
     },
     "keywords": [
-	"wolfgame"
+        "wolfgame"
     ],
     "author": "whiskers75",
     "license": "ISC",
     "dependencies": {
-	"chance": "~0.5.4",
-	"coffee-script": "~1.6.3",
-	"irc-colors": "~1.0.3",
-	"underscore": "~1.5.2"
+        "chance": "~0.5.4",
+        "coffee-script": "~1.6.3",
+        "irc-colors": "~1.0.3",
+        "underscore": "~1.5.2"
     },
     "devDependencies": {
-	"mocha": "*"
+        "mocha": "*",
+        "should": "~3.0.1"
     }
 }
